@@ -1,0 +1,8 @@
+.next
+node_modules
+convex/_generated
+.claude/skills
+.agents/skills
+skills-lock.json
+playwright-report
+test-results

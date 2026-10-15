@@ -1,26 +1,119 @@
 @import "tailwindcss";
 
+/*
+ * Everything Stack design tokens.
+ * Palette: blueprint paper, navy ink, stepped "strata" tints, one signal accent.
+ * Re-theme by editing these variables — components only reference tokens.
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --paper: #eef1f4;
+  --surface: #ffffff;
+  --ink: #14213d;
+  --ink-soft: #46546e;
+  --rule: #c9d2dc;
+  --signal: #f2b134;
+  --signal-ink: #1d1503;
+  --danger: #b4232f;
+  --success: #1f7a52;
+  --stratum-1: #14213d;
+  --stratum-2: #1f3a63;
+  --stratum-3: #2c5689;
+  --stratum-4: #3f74ad;
+  --stratum-5: #6b9bcc;
+  --stratum-6: #a6c3e2;
+  /* Text on each stratum, chosen for ≥4.5:1 contrast */
+  --on-stratum-1: #eef1f4;
+  --on-stratum-2: #eef1f4;
+  --on-stratum-3: #ffffff;
+  --on-stratum-4: #ffffff;
+  --on-stratum-5: #0d1830;
+  --on-stratum-6: #0d1830;
+  --radius: 10px;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --paper: #0f1c33;
+    --surface: #16253f;
+    --ink: #e7edf5;
+    --ink-soft: #a3b1c6;
+    --rule: #2a3c5c;
+    --stratum-1: #e7edf5;
+    --stratum-2: #c3d4ea;
+    --stratum-3: #93b4dc;
+    --stratum-4: #6b96cc;
+    --stratum-5: #4a78b3;
+    --stratum-6: #345d94;
+    --on-stratum-1: #0f1c33;
+    --on-stratum-2: #0f1c33;
+    --on-stratum-3: #0f1c33;
+    --on-stratum-4: #0f1c33;
+    --on-stratum-5: #ffffff;
+    --on-stratum-6: #ffffff;
   }
 }
 
+@theme inline {
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-rule: var(--rule);
+  --color-signal: var(--signal);
+  --color-signal-ink: var(--signal-ink);
+  --color-danger: var(--danger);
+  --color-success: var(--success);
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --radius-card: var(--radius);
+}
+
+html {
+  background: var(--paper);
+  color: var(--ink);
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "tnum";
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Expanded display type: the personality of the page. */
+.display {
+  font-variation-settings: "wdth" 125;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 0.98;
+}
+
+.prose-measure {
+  max-width: 64ch;
+}
+
+:focus-visible {
+  outline: 3px solid var(--signal);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* The single orchestrated motion moment: strata settle into place on load. */
+@keyframes stratum-in {
+  from {
+    transform: translateX(-24px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+.stratum {
+  animation: stratum-in 520ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stratum {
+    animation: none;
+  }
 }

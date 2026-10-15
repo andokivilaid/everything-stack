@@ -1,0 +1,15 @@
+name: Provider or feature request
+description: Suggest a provider, stack option or feature
+labels: [enhancement]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What should Everything Stack support?
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why
+      description: What would you build with it? Is there a zero-signup path (CLI that creates accounts or accountless mode)?

@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/andokivilaid/everything-stack/everything.config.schema.json",
+  "title": "Everything Stack configuration",
+  "description": "Answers to the Everything Stack interview. Written by the everything-stack skill; read by scripts/setup.mjs and the component skills.",
+  "type": "object",
+  "required": ["product", "hosting", "framework", "database", "auth", "billing", "analytics"],
+  "properties": {
+    "product": {
+      "type": "object",
+      "required": ["name", "tagline"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "tagline": { "type": "string" },
+        "description": { "type": "string" },
+        "audience": { "type": "string" }
+      }
+    },
+    "hosting": {
+      "type": "object",
+      "properties": { "provider": { "enum": ["vercel", "cloudflare", "netlify", "railway", "render", "none"] } }
+    },
+    "framework": {
+      "type": "object",
+      "properties": { "provider": { "enum": ["nextjs", "tanstack-start", "react-router", "vite-spa"] } }
+    },
+    "database": {
+      "type": "object",
+      "properties": {
+        "provider": { "enum": ["convex", "supabase", "neon", "turso", "prisma"] },
+        "mode": { "enum": ["local", "cloud"] }
+      }
+    },
+    "auth": {
+      "type": "object",
+      "properties": {
+        "provider": { "enum": ["clerk", "workos", "auth0", "supabase"] },
+        "clerkTemplate": { "enum": ["b2c-saas", "b2b-saas", "waitlist", "native"] }
+      }
+    },
+    "billing": {
+      "type": "object",
+      "properties": {
+        "provider": { "enum": ["stripe", "polar", "demo", "none"] },
+        "currency": { "enum": ["usd", "eur"] }
+      }
+    },
+    "analytics": {
+      "type": "object",
+      "properties": {
+        "providers": {
+          "type": "array",
+          "items": { "enum": ["first-party", "posthog", "mixpanel", "amplitude"] },
+          "uniqueItems": true
+        }
+      }
+    },
+    "features": {
+      "type": "object",
+      "properties": {
+        "marketing": { "type": "boolean" },
+        "dashboard": { "type": "boolean" },
+        "admin": { "type": "boolean" },
+        "darkMode": { "type": "boolean" }
+      }
+    },
+    "adminEmails": { "type": "array", "items": { "type": "string", "format": "email" } }
+  }
+}

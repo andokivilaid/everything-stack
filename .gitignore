@@ -1,41 +1,56 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # dependencies
 /node_modules
 /.pnp
 .pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
-
-# testing
-/coverage
 
 # next.js
 /.next/
 /out/
-
-# production
 /build
+next-env.d.ts
+*.tsbuildinfo
+
+# testing
+/coverage
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/e2e/.auth/
+
+# env files — never commit secrets (.env.example is the documented template)
+.env*
+!.env.example
+
+# Clerk accountless app claim token
+.clerk/
+
+# Stripe Projects: commit state.json + state.local.json, never the vault or cache
+.projects/vault/
+.projects/cache/
+
+# Convex local backend data
+.convex/
+
+# hosting
+.vercel
+.wrangler/
+.open-next/
 
 # misc
 .DS_Store
 *.pem
-
-# debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
-
-# vercel
-.vercel
-
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+# Official vendor agent skills are installed by `npm run skills` (pinned in
+# skills-lock.json) — not committed, because their licenses vary.
+# Everything Stack's own skills (everything-stack, es-*) are committed.
+.claude/skills/*
+!.claude/skills/everything-stack/
+!.claude/skills/es-*/
+.agents/skills/*
+!.agents/skills/everything-stack
+!.agents/skills/es-*

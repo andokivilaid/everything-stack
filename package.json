@@ -3,24 +3,58 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "setup": "node scripts/setup.mjs",
+    "dev": "node scripts/dev.mjs",
+    "dev:next": "next dev",
+    "dev:convex": "node -e \"delete process.env.TZ;require('child_process').spawn('npx',['convex','dev'],{stdio:'inherit',env:process.env})\"",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typecheck": "next typegen && tsc --noEmit",
+    "format": "prettier --write .",
+    "verify": "node scripts/verify.mjs",
+    "verify:quick": "node scripts/verify.mjs --quick",
+    "skills": "node scripts/install-skills.mjs",
+    "env:set": "node scripts/set-env.mjs",
+    "config:apply": "node scripts/apply-config.mjs",
+    "config:check": "node scripts/apply-config.mjs --check",
+    "doctor": "node scripts/doctor.mjs",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
+    "@clerk/nextjs": "^7.9.15",
+    "@polar-sh/nextjs": "^1.1.0",
+    "@polar-sh/sdk": "^1.0.2",
+    "clsx": "^2.1.1",
+    "convex": "^1.46.0",
+    "lucide-react": "^1.57.0",
     "next": "16.4.1",
+    "posthog-js": "^1.438.10",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "stripe": "^23.0.0",
+    "tailwind-merge": "^3.7.0",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
+    "@playwright/test": "^1.64.1",
     "@tailwindcss/turbopack": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.4.1",
+    "prettier": "^3.9.10",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "description": "Answer six questions, get a running SaaS: marketing site, auth, database, billing, analytics and admin — provisioned by your coding agent.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andokivilaid/everything-stack"
+  },
+  "engines": {
+    "node": ">=20.9"
   }
 }

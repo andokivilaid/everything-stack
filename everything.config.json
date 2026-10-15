@@ -1,0 +1,17 @@
+{
+  "$schema": "./everything.config.schema.json",
+  "product": {
+    "name": "Everything Stack",
+    "tagline": "Ship the whole SaaS, not the boilerplate.",
+    "description": "A production-grade starter with marketing site, auth, database, billing, analytics and an admin dashboard — provisioned by an AI agent in one go.",
+    "audience": "Indie makers and small teams"
+  },
+  "hosting": { "provider": "vercel" },
+  "framework": { "provider": "nextjs" },
+  "database": { "provider": "convex", "mode": "local" },
+  "auth": { "provider": "clerk", "clerkTemplate": "b2c-saas" },
+  "billing": { "provider": "stripe", "currency": "usd" },
+  "analytics": { "providers": ["first-party", "posthog"] },
+  "features": { "marketing": true, "dashboard": true, "admin": true, "darkMode": true },
+  "adminEmails": []
+}

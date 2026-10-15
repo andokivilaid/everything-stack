@@ -1,0 +1,34 @@
+name: Bug report
+description: Something in the template or a skill doesn't work
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you ran, what you expected, what you got. Paste errors as text.
+    validations:
+      required: true
+  - type: textarea
+    id: doctor
+    attributes:
+      label: "`npm run doctor` output"
+      description: It never prints secret values.
+      render: text
+  - type: dropdown
+    id: layer
+    attributes:
+      label: Layer
+      options: [Setup, Auth (Clerk), Database (Convex), Billing, Analytics, Deploy, Skills / agent, Docs, Other]
+    validations:
+      required: true
+  - type: input
+    id: agent
+    attributes:
+      label: Agent and version (if relevant)
+      placeholder: Claude Code 3.x, Codex, Cursor…
+  - type: input
+    id: env
+    attributes:
+      label: OS and Node version
+      placeholder: macOS 26, Node 22.22
