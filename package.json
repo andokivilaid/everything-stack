@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^7.9.15",
-    "@polar-sh/nextjs": "^1.1.0",
+    "@polar-sh/nextjs": "^1.1.1",
     "@polar-sh/sdk": "^1.0.2",
     "clsx": "^2.1.1",
     "convex": "^1.46.0",
